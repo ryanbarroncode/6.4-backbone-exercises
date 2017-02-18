@@ -1,8 +1,11 @@
 var Backbone = require('backbone');
-var $ = ('jquery');
+var $ = require('jquery');
 
-var views = require('./models/blog_models.js');
-var models = require('./views/blog_view.js');
+var views = require('./views/blog_view.js');
+var models = require('./models/blog_models.js');
+
+var blogListTemplate = require('../templates/blog_list.hbs');
+var blogPostTemplate = require('../templates/blog_post.hbs');
 
 var AppRouter = Backbone.Router.extend({
   routes: {
@@ -10,17 +13,18 @@ var AppRouter = Backbone.Router.extend({
     'blog/:id/': 'showBlog'
   },
   initialize: function(){
-  this.blogList = new models.BlogCollection();
+  this.blogPost = new models.BlogCollection();
   },
   index: function(){
-    var blogListing = new views.BlogListView({collection: this.blogList});
-    $('.app').html(blogListing.render().$el);
-    this.blogList.fetch();
+    var blogListing = new views.BlogListView({collection: this.blogPost});
+    console.log(blogListing);
+    $('.app').html(blogListing.render().el);
+    this.blogPost.fetch();
   },
 
   showBlog: function(id){
-     var blog = this.blogList.findWhere({'_id': id});
-     var blogDetail = new view.blogDetailView({model: blog});
+     var blog = this.blogPost.findWhere({'_id': id});
+     var blogDetail = new view.BlogDetailView({model: blog});
      $('.app').html(blogDetail.render().el);
    }
 });
