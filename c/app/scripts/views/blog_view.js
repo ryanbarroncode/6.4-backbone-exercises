@@ -15,7 +15,7 @@ var BlogListView = Backbone.View.extend({
     return this;
   },
   addBlog: function(blog){
-    var blogItem = new BlogListView({model: blog});
+    var blogItem = new BlogPostView({model: blog});
 
     this.$el.append(blogItem.render().el);
   }
