@@ -27,7 +27,7 @@ render: function(){
   console.log('log', this.collection);
   this.$el.html(personTemplate());
   return this;
-  },
+},
 });
 
 module.exports={

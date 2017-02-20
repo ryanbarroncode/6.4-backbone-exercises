@@ -1,8 +1,7 @@
 var Backbone = require('backbone');
 var $ = require('jquery');
 
-var models = require('./models/blogmodel.js');
-var views = require('./views/blogviews.js');
+  var views = require('./views/blogviews.js');
 // require the view
 var AppRouter = Backbone.Router.extend({
   routes: {
